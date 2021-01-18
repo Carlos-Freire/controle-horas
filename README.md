@@ -18,3 +18,4 @@ Controle de horas trabalhadas por tarefa
 		Por dev;
 
 	Totalizar sempre em horas / dias, conforme o(s) filtro(s).
+	Utilizar a tabela Controle
