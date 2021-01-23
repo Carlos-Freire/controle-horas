@@ -2,7 +2,9 @@
 
 namespace Controle\Models;
 
-class Controle
+use Controle\Models\Model;
+
+class Controle extends Model
 {
     protected $table = 'Controle';
     protected $id;
@@ -12,6 +14,16 @@ class Controle
     protected $dia;
     protected $hora_ini;
     protected $hora_fim;
+
+    public function __construct()
+    {
+        parent::__construct();
+    }
+
+    public function insert()
+    {
+        return parent::executeInsert(get_object_vars($this));
+    }
 
     /**
      * @return mixed
