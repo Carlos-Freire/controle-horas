@@ -21,10 +21,17 @@ class ComposerStaticInit3f15234347b0ea8ca198362ad02fc8ad
     );
 
     public static $classMap = array (
-        'Controle\\Database\\Connection' => __DIR__ . '/../..' . '/src/database/Connection.php',
-        'Controle\\Database\\Database' => __DIR__ . '/../..' . '/src/database/Database.php',
-        'Controle\\Models\\Controle' => __DIR__ . '/../..' . '/src/models/Controle.php',
-        'Controle\\Models\\Model' => __DIR__ . '/../..' . '/src/models/Model.php',
+        'Controle\\Controllers\\Controller' => __DIR__ . '/../..' . '/src/Controllers/Controller.php',
+        'Controle\\Controllers\\IndexController' => __DIR__ . '/../..' . '/src/Controllers/IndexController.php',
+        'Controle\\Controllers\\Router' => __DIR__ . '/../..' . '/src/Controllers/Router.php',
+        'Controle\\Database\\Connection' => __DIR__ . '/../..' . '/src/Database/Connection.php',
+        'Controle\\Database\\Database' => __DIR__ . '/../..' . '/src/Database/Database.php',
+        'Controle\\Filters\\ControleFilter' => __DIR__ . '/../..' . '/src/Filters/ControleFilter.php',
+        'Controle\\Models\\Controle' => __DIR__ . '/../..' . '/src/Models/Controle.php',
+        'Controle\\Models\\Model' => __DIR__ . '/../..' . '/src/Models/Model.php',
+        'Controle\\Repositories\\ControleRepository' => __DIR__ . '/../..' . '/src/Repositories/ControleRepository.php',
+        'Controle\\Traits\\DateTrait' => __DIR__ . '/../..' . '/src/Traits/DateTrait.php',
+        'Controle\\Views\\View' => __DIR__ . '/../..' . '/src/Views/View.php',
     );
 
     public static function getInitializer(ClassLoader $loader)

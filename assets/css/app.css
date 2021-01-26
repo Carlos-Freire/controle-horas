@@ -4,3 +4,6 @@ label.error {
     margin-top: 5px;
     font-size: 0.96em;
 }
+.send-form {
+    color: rgb(3, 141, 3);
+}

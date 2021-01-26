@@ -6,8 +6,15 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'Controle\\Database\\Connection' => $baseDir . '/src/database/Connection.php',
-    'Controle\\Database\\Database' => $baseDir . '/src/database/Database.php',
-    'Controle\\Models\\Controle' => $baseDir . '/src/models/Controle.php',
-    'Controle\\Models\\Model' => $baseDir . '/src/models/Model.php',
+    'Controle\\Controllers\\Controller' => $baseDir . '/src/Controllers/Controller.php',
+    'Controle\\Controllers\\IndexController' => $baseDir . '/src/Controllers/IndexController.php',
+    'Controle\\Controllers\\Router' => $baseDir . '/src/Controllers/Router.php',
+    'Controle\\Database\\Connection' => $baseDir . '/src/Database/Connection.php',
+    'Controle\\Database\\Database' => $baseDir . '/src/Database/Database.php',
+    'Controle\\Filters\\ControleFilter' => $baseDir . '/src/Filters/ControleFilter.php',
+    'Controle\\Models\\Controle' => $baseDir . '/src/Models/Controle.php',
+    'Controle\\Models\\Model' => $baseDir . '/src/Models/Model.php',
+    'Controle\\Repositories\\ControleRepository' => $baseDir . '/src/Repositories/ControleRepository.php',
+    'Controle\\Traits\\DateTrait' => $baseDir . '/src/Traits/DateTrait.php',
+    'Controle\\Views\\View' => $baseDir . '/src/Views/View.php',
 );
