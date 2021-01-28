@@ -1,9 +1,4 @@
-<?php if (!defined('CONTROLE')) return; ?>
-<div class="panel panel-default">
-  <div class="panel-heading">
-    <h3 class="panel-title">Cadastro de horas</h3>
-  </div>
-  <div class="panel-body">
+<?php if (!defined('CONTROLE')) return; ?>     
       <form class="myFormValidate" id="form-controle" method="post" action="?action=add" data-ajax="true" data-callback="formReload">
           <div class="form-group">
               <label for="dev">Desenvolvedor</label>
@@ -35,8 +30,6 @@
 
           <button type="submit" class="btn btn-success">Salvar</button> <span class="hidden send-form"><i class="fa fa-refresh fa-spin fa-2x fa-fw"></i></span>
       </form>
-  </div>
-</div>
 <script>
     function addZero(i) {
         if (i < 10) {
@@ -56,5 +49,7 @@
         $('#form-controle')[0].reset();
         $('#hora_ini').val(value);
         $('#hora_fim').val(value);
+
+        $('#modal-form').modal('hide');
     }
 </script>
