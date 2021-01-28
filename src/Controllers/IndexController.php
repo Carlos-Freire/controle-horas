@@ -69,6 +69,8 @@ class IndexController extends Controller
 
     public function datatables()
     {
-
+        $this->showJsonHeader();
+        $json = $this->repository->datatables($_REQUEST);
+        echo json_encode($json);
     }
 }

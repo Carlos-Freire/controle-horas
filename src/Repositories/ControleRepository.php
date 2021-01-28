@@ -29,5 +29,27 @@ class ControleRepository
         return $this->model->insert();
     }
 
+    public function datatables($request)
+    {
+        $json = array();
+        $json['draw'] = intval($request['draw']);
+        $json['recordsTotal'] = 100;
+        $json['recordsFiltered'] = 10;
+        //var_dump($request);
+
+        $result = $this->model->select(
+            '*',
+            'where',
+            10,
+            'id',
+            'DESC'
+        );
+        if (count($result) > 0) {
+            $json['data'] = $result;
+        }
+
+        return $json;
+    }
+
 
 }

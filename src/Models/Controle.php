@@ -17,12 +17,18 @@ class Controle extends Model
 
     public function __construct()
     {
-        parent::__construct();
+        parent::__construct($this->table);
     }
 
     public function insert()
     {
         return parent::executeInsert(get_object_vars($this));
+    }
+
+    public function select($request)
+    {
+
+        return parent::executeSelect();
     }
 
     /**

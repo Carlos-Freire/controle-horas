@@ -10,13 +10,14 @@ class Model
     private $table;
     private $exclude;
 
-    public function __construct()
+    public function __construct($table)
     {
         $this->connection = Connection::getConnection();
         $this->exclude = array(
             'table',
             'connection'
         );
+        $this->setTable($table);
     }
 
     /**
@@ -51,7 +52,7 @@ class Model
             $keys = array();
             $values = array();
             $data = array();
-            $this->setTable($params['table']);
+            //$this->setTable($params['table']);
             $exclude = array_merge($this->exclude, array('id'));
 
             //faço um loop pelos objetos e descarto as chaves que eu não preciso
@@ -85,4 +86,10 @@ class Model
         return $id;
     }
 
+    protected function executeSelect($fields = '*', $where = '', int $limit = 10, $orderBy = 'id', $order = 'DESC')
+    {
+        $sth = $this->connection->prepare("SELECT * FROM " . $this->getTable());
+        $sth->execute();
+        return $sth->fetchAll(\PDO::FETCH_ASSOC);
+    }
 }

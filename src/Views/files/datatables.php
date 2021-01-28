@@ -59,19 +59,6 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <?php for($x=0; $x<100; $x++) { ?>
-                    <tr>
-                        <td><?php echo $x; ?></td>
-                        <td>Rafael</td>
-                        <td>
-                            <strong>Proped</strong>
-                            <p><small>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</small></p>
-                        </td>
-                        <td>26/07/1983</td>
-                        <td>00:00:00</td>
-                        <td>18:31:00</td>
-                    </tr>
-                    <?php } ?>
                 </tbody>
                 <tfoot>
                     <tr>

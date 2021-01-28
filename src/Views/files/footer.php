@@ -20,6 +20,9 @@
 $(document).ready(function() {
     var table = $('#example').DataTable({
         dom: 'Bfrtip',
+        "processing": true,
+        "serverSide": true,
+        "stateSave": true,
         "searching": false,
         "lengthChange": false,
         "select": {
@@ -27,6 +30,24 @@ $(document).ready(function() {
         },
         "language": {
             url: "//cdn.datatables.net/plug-ins/1.10.19/i18n/Portuguese-Brasil.json"
+        },
+        "columns": [
+            {data: 'id', name: 'id'},
+            {data: 'dev', name: 'dev'},
+            {data: 'cliente', name: 'cliente'},
+            {data: 'dia', name: 'dia'},
+            {data: 'hora_ini', name: 'hora_ini'},
+            {data: 'hora_fim', name: 'hora_fim'}
+        ],
+        "ajax": {
+            url: "?action=datatables",
+            data: function (d) {
+                d.dev = $('#dev2').val(),
+                d.cliente = $('#cliente2').val(),
+                d.dia = $('#dia2').val(),
+                d.hora_ini = $('#hora_ini2').val(),
+                d.hora_fim = $('#hora_fim2').val()
+            }
         },
         buttons: [
             {
