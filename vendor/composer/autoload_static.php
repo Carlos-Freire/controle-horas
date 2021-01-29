@@ -26,11 +26,13 @@ class ComposerStaticInit3f15234347b0ea8ca198362ad02fc8ad
         'Controle\\Controllers\\Router' => __DIR__ . '/../..' . '/src/Controllers/Router.php',
         'Controle\\Database\\Connection' => __DIR__ . '/../..' . '/src/Database/Connection.php',
         'Controle\\Database\\Database' => __DIR__ . '/../..' . '/src/Database/Database.php',
+        'Controle\\Datatables\\Datatables' => __DIR__ . '/../..' . '/src/Datatables/Datatables.php',
         'Controle\\Filters\\ControleFilter' => __DIR__ . '/../..' . '/src/Filters/ControleFilter.php',
         'Controle\\Models\\Controle' => __DIR__ . '/../..' . '/src/Models/Controle.php',
         'Controle\\Models\\Model' => __DIR__ . '/../..' . '/src/Models/Model.php',
         'Controle\\Repositories\\ControleRepository' => __DIR__ . '/../..' . '/src/Repositories/ControleRepository.php',
         'Controle\\Traits\\DateTrait' => __DIR__ . '/../..' . '/src/Traits/DateTrait.php',
+        'Controle\\Traits\\HourTrait' => __DIR__ . '/../..' . '/src/Traits/HourTrait.php',
         'Controle\\Views\\View' => __DIR__ . '/../..' . '/src/Views/View.php',
     );
 

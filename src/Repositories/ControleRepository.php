@@ -4,6 +4,7 @@ namespace Controle\Repositories;
 
 use Controle\Models\Controle;
 use Controle\Filters\ControleFilter;
+use Controle\Datatables\Datatables;
 
 class ControleRepository
 {
@@ -31,6 +32,11 @@ class ControleRepository
 
     public function datatables($request)
     {
+        $datatables = new Datatables($request);
+        $order = $datatables->getOrder();
+        $orderBy = $datatables->getOrderBy();
+
+
         $json = array();
         $json['draw'] = intval($request['draw']);
         $json['recordsTotal'] = 100;
@@ -41,9 +47,10 @@ class ControleRepository
             '*',
             'where',
             10,
-            'id',
-            'DESC'
+            $orderBy,
+            $order
         );
+
         if (count($result) > 0) {
             $json['data'] = $result;
         }

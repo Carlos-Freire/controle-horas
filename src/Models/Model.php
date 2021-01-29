@@ -88,7 +88,8 @@ class Model
 
     protected function executeSelect($fields = '*', $where = '', int $limit = 10, $orderBy = 'id', $order = 'DESC')
     {
-        $sth = $this->connection->prepare("SELECT * FROM " . $this->getTable());
+        $sql = "SELECT * FROM " . $this->getTable() . " ORDER BY {$orderBy} {$order}";
+        $sth = $this->connection->prepare($sql);
         $sth->execute();
         return $sth->fetchAll(\PDO::FETCH_ASSOC);
     }

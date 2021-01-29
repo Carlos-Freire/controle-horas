@@ -11,10 +11,12 @@ return array(
     'Controle\\Controllers\\Router' => $baseDir . '/src/Controllers/Router.php',
     'Controle\\Database\\Connection' => $baseDir . '/src/Database/Connection.php',
     'Controle\\Database\\Database' => $baseDir . '/src/Database/Database.php',
+    'Controle\\Datatables\\Datatables' => $baseDir . '/src/Datatables/Datatables.php',
     'Controle\\Filters\\ControleFilter' => $baseDir . '/src/Filters/ControleFilter.php',
     'Controle\\Models\\Controle' => $baseDir . '/src/Models/Controle.php',
     'Controle\\Models\\Model' => $baseDir . '/src/Models/Model.php',
     'Controle\\Repositories\\ControleRepository' => $baseDir . '/src/Repositories/ControleRepository.php',
     'Controle\\Traits\\DateTrait' => $baseDir . '/src/Traits/DateTrait.php',
+    'Controle\\Traits\\HourTrait' => $baseDir . '/src/Traits/HourTrait.php',
     'Controle\\Views\\View' => $baseDir . '/src/Views/View.php',
 );
