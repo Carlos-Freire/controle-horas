@@ -320,4 +320,21 @@ class Model
         }
         return $sql;
     }
+
+    public function delete($field, $value)
+    {
+        try {
+            $sql = "DELETE FROM {$this->getTable()} WHERE {$field} = :{$field}";
+            $stmt = $this->connection->prepare($sql);
+            $stmt->bindParam(":{$field}", $value, \PDO::PARAM_STR);   
+            $stmt->execute();
+
+            return true;
+        } catch (Exception $e) {
+            $this->connection->rollback();
+            throw $e;
+        }
+
+        return false;
+    }
 }

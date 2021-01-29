@@ -64,6 +64,28 @@ class IndexController extends Controller
 
     public function delete()
     {
+        $this->showJsonHeader();
+
+        if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['id'])) {
+            $delete = $this->repository->delete('id', intval($_GET['id']));
+            
+            if ($delete) {
+                echo json_encode(array(
+                    'result' => 'success',
+                    'message' => 'O cadastro foi deletado com sucesso!'
+                ));
+            } else {
+                echo json_encode(array(
+                    'result' => 'error',
+                    'message' => 'Ocorreu um erro durante o processo de deletar o item!'
+                ));
+            }
+        } else {
+            echo json_encode(array(
+                'result' => 'error',
+                'message' => 'Método não aceito!'
+            ));
+        }
 
     }
 

@@ -92,5 +92,8 @@ class ControleRepository
         return $json;
     }
 
-
+    public function delete($field, $value)
+    {
+        return $this->model->delete($field, $value);
+    }
 }
