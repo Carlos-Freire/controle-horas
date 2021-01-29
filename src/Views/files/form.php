@@ -51,5 +51,6 @@
         $('#hora_fim').val(value);
 
         $('#modal-form').modal('hide');
+        $('#clean').trigger( "click" );
     }
 </script>

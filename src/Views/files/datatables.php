@@ -39,7 +39,8 @@
       </div>
       <div class="row">
         <div class="col-sm-12 col-md-12">
-            <button type="submit" class="btn btn-primary">Pesquisar</button>
+            <button type="button" id="search" class="btn btn-primary">Pesquisar</button>
+            <button type="button" id="clean" class="btn btn-default">Limpar</button>
         </div>
       </div>
     </form>

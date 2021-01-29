@@ -44,6 +44,7 @@ $(document).ready(function() {
             data: function (d) {
                 d.dev = $('#dev2').val(),
                 d.cliente = $('#cliente2').val(),
+                d.area = $('#area2').val(),
                 d.dia = $('#dia2').val(),
                 d.hora_ini = $('#hora_ini2').val(),
                 d.hora_fim = $('#hora_fim2').val()
@@ -102,6 +103,22 @@ $(document).ready(function() {
                 }
             },
         ]
+    });
+
+    $('#search').on('click', function(e) {
+        e.preventDefault();
+        table.draw();
+    });
+
+    $('#clean').on('click', function(e) {
+        e.preventDefault();
+        $('#dev2').val('');
+        $('#cliente2').val('');
+        $('#area2').val('');
+        $('#dia2').val('');
+        $('#hora_ini2').val('');
+        $('#hora_fim2').val('');
+        table.draw();
     });
 } );
 </script>

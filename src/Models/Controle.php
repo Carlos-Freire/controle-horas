@@ -25,11 +25,7 @@ class Controle extends Model
         return parent::executeInsert(get_object_vars($this));
     }
 
-    public function select($fields, $where = '', int $limit = 10, $orderBy = 'id', $order = 'DESC')
-    {
 
-        return parent::executeSelect($fields, $where, $limit, $orderBy, $order);
-    }
 
     /**
      * @return mixed

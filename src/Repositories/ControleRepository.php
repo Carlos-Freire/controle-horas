@@ -32,27 +32,61 @@ class ControleRepository
 
     public function datatables($request)
     {
+        //pegando todos os dados vindos do datatables e filtrando o conteudo
         $datatables = new Datatables($request);
         $order = $datatables->getOrder();
         $orderBy = $datatables->getOrderBy();
+        $start = $datatables->getStart();
+        $length = $datatables->getLength();
+        $draw = $datatables->getDraw();
+        $datatables->setSearch(array(
+            'dev',
+            'cliente',
+            'area',
+            'dia',
+            'hora_ini',
+            'hora_fim',
+        ));
+        //todos os campos do formulário filtrados
+        $search = $datatables->getSearch();
 
+        //criando a consulta ao banco
+        $this->model->setSelect("*")
+        ->setStart($start)
+        ->setLimit($length)
+        ->setOrderBy($orderBy)
+        ->setOrder($order);
+
+        if (isset($search['dev'])) {
+            $this->model->setWhere('dev','LIKE','%' . $search['dev'] . '%');
+        }
+        if (isset($search['cliente'])) {
+            $this->model->setWhere('cliente','LIKE','%' . $search['cliente'] . '%');
+        }
+        if (isset($search['area'])) {
+            $this->model->setWhere('area','LIKE','%' . $search['area'] . '%');
+        }
+        if (isset($search['dia'])) {
+            $this->model->setWhere('dia','=',$search['dia']);
+        }
+        if (isset($search['hora_ini'])) {
+            $this->model->setWhere('hora_ini','=',$search['hora_ini']);
+        }
+        if (isset($search['hora_fim'])) {
+            $this->model->setWhere('hora_fim','=',$search['hora_fim']);
+        }
+
+        $result = $this->model->getResult();
 
         $json = array();
-        $json['draw'] = intval($request['draw']);
-        $json['recordsTotal'] = 100;
-        $json['recordsFiltered'] = 10;
-        //var_dump($request);
+        $json['draw'] = $draw;
+        $json['recordsTotal'] = $result['total']; //pega o total de registros atuais
+        $json['recordsFiltered'] = $result['total']; //pega o total de registros atuais
 
-        $result = $this->model->select(
-            '*',
-            'where',
-            10,
-            $orderBy,
-            $order
-        );
-
-        if (count($result) > 0) {
-            $json['data'] = $result;
+        if (count($result['records']) > 0) {
+            $json['data'] = $result['records'];
+        } else {
+            $json['data'] = array();
         }
 
         return $json;
