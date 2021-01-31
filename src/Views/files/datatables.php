@@ -48,7 +48,7 @@
 
     <div class="row mt-5">
         <div class="col-md-12">
-            <table id="example" style="width:100%" class="table table-striped table-bordered display">
+            <table id="tabela" style="width:100%" class="table table-striped table-bordered display datatables" data-url="?action=datatables">
                 <thead>
                     <tr>
                         <th>Id</th>

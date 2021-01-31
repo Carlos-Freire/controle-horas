@@ -16,111 +16,18 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
 <script src="https://cdn.datatables.net/buttons/1.6.5/js/buttons.html5.min.js"></script>
 <script src="../controle-horas/assets/js/form.js"></script>
+<script src="../controle-horas/assets/js/datatable.js"></script>
 <script>
 $(document).ready(function() {
-    var table = $('#example').DataTable({
-        dom: 'Bfrtip',
-        "processing": true,
-        "serverSide": true,
-        "stateSave": true,
-        "searching": false,
-        "lengthChange": false,
-        "select": {
-            style: 'multi'
-        },
-        "language": {
-            url: "//cdn.datatables.net/plug-ins/1.10.19/i18n/Portuguese-Brasil.json"
-        },
-        "columns": [
-            {data: 'id', name: 'id'},
-            {data: 'dev', name: 'dev'},
-            {data: 'cliente', name: 'cliente'},
-            {data: 'dia', name: 'dia'},
-            {data: 'hora_ini', name: 'hora_ini'},
-            {data: 'hora_fim', name: 'hora_fim'}
-        ],
-        "ajax": {
-            url: "?action=datatables",
-            data: function (d) {
-                d.dev = $('#dev2').val(),
-                d.cliente = $('#cliente2').val(),
-                d.area = $('#area2').val(),
-                d.dia = $('#dia2').val(),
-                d.hora_ini = $('#hora_ini2').val(),
-                d.hora_fim = $('#hora_fim2').val()
-            }
-        },
-        buttons: [
-            {
-                text: 'Selecionar Todos',
-                className: 'btn btn-default',
-                action: function () {
-                    table.rows().select();
-                }
-            },
-            {
-                text: 'Remover Seleção',
-                className: 'btn btn-default',
-                action: function () {
-                    table.rows().deselect();
-                }
-            },
-            {
-                text: '<i class="fa fa-plus" aria-hidden="true" title="Adicionar"></i>',
-                className: 'btn btn-default',
-                action: function ( e, dt, node, config ) {
-                    $('#modal-form').modal('show');
-                }
-            },
-            {
-                text: '<i class="fa fa-pencil" aria-hidden="true" title="Editar Selecionado"></i>',
-                className: 'btn btn-default',
-                action: function ( e, dt, node, config ) {
-                    alert( this.text() );
-                }
-            },
-            {
-                text: '<i class="fa fa-trash" aria-hidden="true" title="Deletar selecionados"></i>',
-                className: 'btn btn-danger',
-                action: function ( e, dt, node, config ) {
-                    alert( this.text() );
-                }
-            },
-            {
-                extend: 'pdfHtml5',
-                messageTop: 'Controle de Horas',
-                text: '<i class="fa fa-file-pdf-o" aria-hidden="true" title="Gerar PDF"></i>',
-                className: 'btn btn-default',
-                /*action: function ( e, dt, node, config ) {
-                    alert( this.text() );
-                }*/
-            },
-            {
-                text: '<i class="fa fa-pie-chart" aria-hidden="true" title="Gerar Gráfico"></i>',
-                className: 'btn btn-default',
-                action: function ( e, dt, node, config ) {
-                    alert( this.text() );
-                }
-            },
-        ]
-    });
-
-    $('#search').on('click', function(e) {
-        e.preventDefault();
-        table.draw();
-    });
-
     $('#clean').on('click', function(e) {
         e.preventDefault();
-        $('#dev2').val('');
-        $('#cliente2').val('');
-        $('#area2').val('');
-        $('#dia2').val('');
-        $('#hora_ini2').val('');
-        $('#hora_fim2').val('');
-        table.draw();
+        window.datatableApp.clean();
     });
-} );
+    $('#search').on('click', function(e) {
+        e.preventDefault();
+        window.datatableApp.search();
+    });
+});
 </script>
 </body>
 </html>
