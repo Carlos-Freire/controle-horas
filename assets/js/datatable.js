@@ -28,6 +28,7 @@
                     {data: 'id', name: 'id'},
                     {data: 'dev', name: 'dev'},
                     {data: 'cliente', name: 'cliente'},
+                    {data: 'area', name: 'area'},
                     {data: 'dia', name: 'dia'},
                     {data: 'hora_ini', name: 'hora_ini'},
                     {data: 'hora_fim', name: 'hora_fim'}
@@ -69,7 +70,7 @@
                         text: '<i class="fa fa-pencil" aria-hidden="true" title="Editar Selecionado"></i>',
                         className: 'btn btn-default',
                         action: function ( e, dt, node, config ) {
-                            alert( this.text() );
+                            $private.editar();
                         }
                     },
                     {
@@ -97,6 +98,41 @@
                     },
                 ]
             });
+        };
+
+        $private.editar = function() {
+            var count = $table.rows( { selected: true } ).count();
+            var data = $table.rows( { selected: true } ).data();
+
+            if (count > 1) {
+                Swal.fire(
+                    'Erro!',
+                    'Selecione pelo apenas um item para editar!',
+                    'error'
+                );
+            } else if(count == 0) {
+                Swal.fire(
+                    'Erro!',
+                    'Selecione pelo menos um item para poder editá-lo!',
+                    'error'
+                );
+            } else {
+                var $form = $('#form-controle');
+                var dataForm = data[0];
+                var id = dataForm.id;
+                var $newUrl = '?action=edit&id=' + id;
+
+                $form.attr('action',$newUrl);
+
+                $('#dev').val(dataForm.dev);
+                $('#cliente').val(dataForm.cliente);
+                $('#area').val(dataForm.area);
+                $('#dia').val(dataForm.dia);
+                $('#hora_ini').val(dataForm.hora_ini);
+                $('#hora_fim').val(dataForm.hora_fim);
+
+                $('#modal-form').modal('show');
+            }
         };
 
         $private.deletar = function() {

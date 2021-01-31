@@ -121,7 +121,7 @@ class ControleFilter
 
     protected function setHoraFim()
     {
-        $hora = filter_input(INPUT_POST, 'hora_ini', FILTER_DEFAULT);
+        $hora = filter_input(INPUT_POST, 'hora_fim', FILTER_DEFAULT);
         $this->hora_fim = HourTrait::correctHour($hora);
     }
 }

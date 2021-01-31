@@ -46,6 +46,7 @@
         var hour = addZero(date.getHours());
         var value = hour + ':' + minutes + ':' + seconds;
 
+        $('#form-controle').attr('action','?action=add');
         $('#form-controle')[0].reset();
         $('#hora_ini').val(value);
         $('#hora_fim').val(value);

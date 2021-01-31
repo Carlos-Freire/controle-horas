@@ -25,6 +25,10 @@ class Controle extends Model
         return parent::executeInsert(get_object_vars($this));
     }
 
+    public function update()
+    {
+        return parent::executeUpdate(get_object_vars($this));
+    }
 
 
     /**

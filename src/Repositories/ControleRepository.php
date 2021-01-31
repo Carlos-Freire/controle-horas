@@ -30,6 +30,22 @@ class ControleRepository
         return $this->model->insert();
     }
 
+    public function edit(int $id)
+    {
+        //pego os dados vindos do $_POST todos filtrados
+        $form = new ControleFilter;
+        //passo para o model gravar no banco
+        $this->model->setDev($form->getDev());
+        $this->model->setCliente($form->getCliente());
+        $this->model->setArea($form->getArea());
+        $this->model->setDia($form->getDia());
+        $this->model->setHoraIni($form->getHoraIni());
+        $this->model->setHoraFim($form->getHoraFim());
+        $this->model->setId($id);
+        //retorno true se deu tudo certo
+        return $this->model->update();
+    }
+
     public function datatables($request)
     {
         //pegando todos os dados vindos do datatables e filtrando o conteudo

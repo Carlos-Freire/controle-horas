@@ -98,6 +98,46 @@ class Model
         return $id;
     }
 
+    public function executeUpdate($params = array())
+    {
+        if (array_key_exists("table", $params))
+        {
+            $keys = array();
+            $data = array();
+            $exclude = array_merge($this->exclude);
+
+            //faço um loop pelos objetos e descarto as chaves que eu não preciso
+            foreach($params as $key => $value)
+            {
+                if (!in_array($key,$exclude))
+                {
+                    $data[':' . $key] = $value;
+
+                    if ($key !== "id") {
+                        $keys[] = $key . ' = :' . $key;
+                    }
+                }
+            }
+            $keys = implode($keys,',');
+
+            try {
+                $this->connection->beginTransaction();
+
+                //crio a query para atualizar os dados na tabela
+                $sql = "UPDATE {$this->getTable()} SET {$keys} WHERE id = :id";
+                $stmt = $this->connection->prepare($sql);
+                $stmt->execute($data);
+                $this->connection->commit();
+                return true;
+
+            } catch (Exception $e) {
+                $this->connection->rollback();
+                throw $e;
+            }
+        }
+        return false;
+    }
+
     /**
      * @return mixed
      */

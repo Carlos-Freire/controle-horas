@@ -53,7 +53,8 @@
                     <tr>
                         <th>Id</th>
                         <th>Desenvolvedor</th>
-                        <th>Cliente/Area</th>
+                        <th>Cliente</th>
+                        <th>Área</th>
                         <th>Dia</th>
                         <th>Hora inicial</th>
                         <th>Hora Final</th>
@@ -65,7 +66,8 @@
                     <tr>
                         <th>Id</th>
                         <th>Desenvolvedor</th>
-                        <th>Cliente/Area</th>
+                        <th>Cliente</th>
+                        <th>Área</th>
                         <th>Dia</th>
                         <th>Hora inicial</th>
                         <th>Hora Final</th>
