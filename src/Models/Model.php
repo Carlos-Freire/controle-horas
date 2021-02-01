@@ -3,6 +3,8 @@
 namespace Controle\Models;
 
 use Controle\Database\Connection;
+use Controle\Database\Where\StrategyBetween;
+use Controle\Database\Where\StrategyOperator;
 
 class Model
 {
@@ -250,7 +252,25 @@ class Model
         $this->where[] = array(
             'key' => $key,
             'operator' => $operator,
-            'value' => $value
+            'value' => $value,
+            'between' => false
+        );
+        return $this;
+    }
+
+    /**
+     * @param mixed $key
+     * @param mixed $start
+     * @param mixed $end
+     * @return Model
+     */
+    public function setWhereBetween($key,$start,$end): Model
+    {
+        $this->where[] = array(
+            'date' => $key,
+            'start' => $start,
+            'end' => $end,
+            'between' => true
         );
         return $this;
     }
@@ -271,8 +291,20 @@ class Model
         $limit = $this->getLimit();
 
         if (!is_null($select) && !is_null($table)) {
-            $result['records'] = $this->getRecords($select, $table, $where, $orderBy, $order, $start, $limit);
-            $result['total'] = $this->getTotal($table,$where);
+            $result['records'] = $this->getRecords(
+                $select,
+                $table,
+                $where,
+                $orderBy,
+                $order,
+                $start,
+                $limit
+            );
+
+            $result['total'] = $this->getTotal(
+                $table,
+                $where
+            );
         }
 
         return $result;
@@ -300,10 +332,7 @@ class Model
         $stmt = $this->connection->prepare($sql);
 
         if (count($where) > 0) {
-            $execute = array();
-            foreach($where as $field) {
-                $execute[$field['key']] = $field['value'];
-            }
+            $execute = $this->setExecuteWhere($where);
             $stmt->execute($execute);
         } else {
             $stmt->execute();
@@ -327,10 +356,7 @@ class Model
         $stmt = $this->connection->prepare($sql);
 
         if (count($where) > 0) {
-            $execute = array();
-            foreach($where as $field) {
-                $execute[$field['key']] = $field['value'];
-            }
+            $execute = $this->setExecuteWhere($where);
             $stmt->execute($execute);
         } else {
             $stmt->execute();
@@ -346,15 +372,37 @@ class Model
         return $total;
     }
 
+    /*
+     * Cria o array com os campos para o execute da PDO filtrar
+     */
+    private function setExecuteWhere($where): array
+    {
+        $execute = array();
+
+        foreach($where as $field) {
+            if ($field['between'] === false) {
+                $execute[$field['key']] = $field['value'];
+            } else {
+                $execute[$field['date'] . '_start'] = $field['start'];
+                $execute[$field['date'] . '_end'] = $field['end'];
+            }
+        }
+
+        return $execute;
+    }
+
     private function sqlWhere($where)
     {
+        $between = new StrategyBetween;
+        $operator = new StrategyOperator;
         $sql = "";
         $x = 0;
         foreach($where as $query) {
-            if ($x == 0)
-                $sql .= "WHERE {$query['key']} {$query['operator']} :{$query['key']} ";
+
+            if ($query['between'] === false)
+                $sql .= $operator->getWhere($x, $query);
             else
-                $sql .= "AND {$query['key']} {$query['operator']} :{$query['key']} ";
+                $sql .= $between->getWhere($x, $query);
 
             $x++;
         }

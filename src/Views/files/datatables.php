@@ -11,19 +11,11 @@
               <label for="dev2">Desenvolvedor</label>
               <input type="text" class="form-control" id="dev2" placeholder="Coloque o nome do desenvolvedor aqui...">
             </div>
-            <div class="form-group">
-                <label for="dia2">Dia</label>
-                <input type="date" class="form-control" name="dia2" id="dia2" placeholder="Informe a data da tarefa...">
-            </div>
           </div>
           <div class="col-sm-12 col-md-4">
             <div class="form-group">
               <label for="cliente2">Cliente</label>
               <input type="text" class="form-control" id="cliente2" placeholder="Coloque o nome do cliente aqui...">
-            </div>
-            <div class="form-group">
-                <label for="hora_ini2">Hora inicial</label>
-                <input type="time" min="00:00:00" max="23:59:59" class="form-control" name="hora_ini2" id="hora_ini2">
             </div>
           </div>
           <div class="col-sm-12 col-md-4">
@@ -31,24 +23,55 @@
               <label for="area2">Área</label>
               <input type="text" class="form-control" id="area2" placeholder="Coloque o nome da área aqui...">
             </div>
-            <div class="form-group">
-                <label for="hora_fim2">Hora final</label>
-                <input type="time" min="00:00:00" max="23:59:59" class="form-control" name="hora_fim2" id="hora_fim2"  placeholder="Informe a hora de término...">
-            </div>
           </div>
       </div>
-      <hr>
       <div class="row">
-          <div class="col-sm-12 col-md-6">
-              <div class="form-group">
-                  <label for="de">De</label>
-                  <input type="date" class="form-control" name="de" id="de" placeholder="Informe a data de início...">
-              </div>
-          </div>
-          <div class="col-sm-12 col-md-6">
-              <div class="form-group">
-                  <label for="ate">Até</label>
-                  <input type="date" class="form-control" name="ate" id="ate" placeholder="Informe a data final...">
+          <div class="col-sm-12">
+              <!-- Nav tabs -->
+              <ul class="nav nav-tabs" role="tablist">
+                  <li role="presentation" class="active"><a href="#por_data" aria-controls="home" role="tab" data-toggle="tab">Filtrar por data</a></li>
+                  <li role="presentation"><a href="#por_periodo" aria-controls="profile" role="tab" data-toggle="tab">Filtrar por período</a></li>
+              </ul>
+              <!-- Tab panes -->
+              <div class="tab-content">
+                  <div role="tabpanel" class="tab-pane active" id="por_data" style="padding: 20px 10px;">
+                      <div class="row">
+                          <div class="col-sm-12 col-md-4">
+                              <div class="form-group">
+                                  <label for="dia2">Dia</label>
+                                  <input type="date" class="form-control" name="dia2" id="dia2" placeholder="Informe a data da tarefa...">
+                              </div>
+                          </div>
+                          <div class="col-sm-12 col-md-4">
+                              <div class="form-group">
+                                  <label for="hora_ini2">Hora inicial</label>
+                                  <input type="time" min="00:00:00" max="23:59:59" class="form-control" name="hora_ini2" id="hora_ini2">
+                              </div>
+                          </div>
+                          <div class="col-sm-12 col-md-4">
+                              <div class="form-group">
+                                  <label for="hora_fim2">Hora final</label>
+                                  <input type="time" min="00:00:00" max="23:59:59" class="form-control" name="hora_fim2" id="hora_fim2"  placeholder="Informe a hora de término...">
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  <div role="tabpanel" class="tab-pane" id="por_periodo" style="padding: 20px 10px;">
+                      <div class="row">
+                          <div class="col-sm-12 col-md-4">
+                              <div class="form-group">
+                                  <label for="de">De</label>
+                                  <input type="date" class="form-control" name="de" id="de" placeholder="Informe a data de início...">
+                              </div>
+                          </div>
+                          <div class="col-sm-12 col-md-4">
+                              <div class="form-group">
+                                  <label for="ate">Até</label>
+                                  <input type="date" class="form-control" name="ate" id="ate" placeholder="Informe a data final...">
+                              </div>
+                          </div>
+                      </div>
+                  </div>
               </div>
           </div>
       </div>

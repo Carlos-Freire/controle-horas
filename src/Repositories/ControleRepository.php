@@ -95,6 +95,9 @@ class ControleRepository
         if (isset($search['hora_fim'])) {
             $this->model->setWhere('hora_fim','<',$search['hora_fim']);
         }
+        if (isset($search['de']) && isset($search['ate'])) {
+            $this->model->setWhereBetween('dia',$search['de'],$search['ate']);
+        }
 
         $result = $this->model->getResult();
 
