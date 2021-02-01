@@ -37,6 +37,21 @@
             </div>
           </div>
       </div>
+      <hr>
+      <div class="row">
+          <div class="col-sm-12 col-md-6">
+              <div class="form-group">
+                  <label for="de">De</label>
+                  <input type="date" class="form-control" name="de" id="de" placeholder="Informe a data de início...">
+              </div>
+          </div>
+          <div class="col-sm-12 col-md-6">
+              <div class="form-group">
+                  <label for="ate">Até</label>
+                  <input type="date" class="form-control" name="ate" id="ate" placeholder="Informe a data final...">
+              </div>
+          </div>
+      </div>
       <div class="row">
         <div class="col-sm-12 col-md-12">
             <button type="button" id="search" class="btn btn-primary">Pesquisar</button>

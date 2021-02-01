@@ -55,6 +55,8 @@ class ControleRepository
         $start = $datatables->getStart();
         $length = $datatables->getLength();
         $draw = $datatables->getDraw();
+
+        //pegando os campos criados por mim que serão usados na busca
         $datatables->setSearch(array(
             'dev',
             'cliente',
@@ -62,6 +64,8 @@ class ControleRepository
             'dia',
             'hora_ini',
             'hora_fim',
+            'de',
+            'ate'
         ));
         //todos os campos do formulário filtrados
         $search = $datatables->getSearch();
@@ -86,10 +90,10 @@ class ControleRepository
             $this->model->setWhere('dia','=',$search['dia']);
         }
         if (isset($search['hora_ini'])) {
-            $this->model->setWhere('hora_ini','=',$search['hora_ini']);
+            $this->model->setWhere('hora_ini','>',$search['hora_ini']);
         }
         if (isset($search['hora_fim'])) {
-            $this->model->setWhere('hora_fim','=',$search['hora_fim']);
+            $this->model->setWhere('hora_fim','<',$search['hora_fim']);
         }
 
         $result = $this->model->getResult();

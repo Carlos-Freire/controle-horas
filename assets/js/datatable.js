@@ -41,7 +41,9 @@
                         d.area = $('#area2').val(),
                         d.dia = $('#dia2').val(),
                         d.hora_ini = $('#hora_ini2').val(),
-                        d.hora_fim = $('#hora_fim2').val()
+                        d.hora_fim = $('#hora_fim2').val(),
+                        d.de = $('#de').val(),
+                        d.ate = $('#ate').val()
                     }
                 },
                 buttons: [
@@ -234,6 +236,8 @@
             $('#dia2').val('');
             $('#hora_ini2').val('');
             $('#hora_fim2').val('');
+            $('#de').val('');
+            $('#ate').val('');
             $table.draw();
         };
 
