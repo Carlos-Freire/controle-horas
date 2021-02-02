@@ -58,7 +58,7 @@ class DevReport extends Search
                 $calc = new CalcDays($database);
                 $helper = $calc->getDays();
 
-                $phrase = $helper["days"] . ' dias - ' . $helper["hours"] . ':' . $helper["minutes"] . ':' . $helper["seconds"];
+                $phrase = $helper["days"] . ' Dias - ' . $helper["hours"] . ' Horas, ' . $helper["minutes"] . ' Minutos, ' . $helper["seconds"] . ' Segundos';
 
                 $report[] = array(
                     'days' => $helper["days"],
