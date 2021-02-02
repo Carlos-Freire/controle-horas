@@ -2,30 +2,47 @@
 
 namespace Controle\Report;
 
-use Controle\Report\Search;
+use Controle\Models\Controle;
+use Controle\Datatables\Datatables;
 use Controle\Report\CalcDays;
 
-class DevReport extends Search
+class Report
 {
+    protected $request;
+    protected $model;
 
     public function __construct($request)
     {
-        parent::__construct($request);
+        $this->request = $request;
+        $this->model = new Controle;
     }
 
-    public function getReport(): array
+    public function getReport($type = 'dev'): array
     {
         $report = array();
 
+        //pegando todos os dados vindos do datatables e filtrando o conteudo
+        $datatables = new Datatables($this->request);
+        //pegando os campos criados por mim que serão usados na busca
+        $datatables->setSearch(array(
+            'dev',
+            'cliente',
+            'area',
+            'dia',
+            'hora_ini',
+            'hora_fim',
+            'de',
+            'ate'
+        ));
         //todos os campos do formulário filtrados
-        $search = $this->getSearch();
+        $search = $datatables->getSearch();
 
         //criando a consulta ao banco
         $this->model->setSelect("
             SEC_TO_TIME( SUM( TIME_TO_SEC( TIMEDIFF(hora_fim, hora_ini) ) ) ) AS horas,
-            dev 
+            {$type} 
         ");
-        $this->model->setGroupBy('dev');
+        $this->model->setGroupBy($type);
 
         if (isset($search['dev'])) {
             $this->model->setWhere('dev','LIKE','%' . $search['dev'] . '%');
@@ -58,7 +75,7 @@ class DevReport extends Search
                 $calc = new CalcDays($database);
                 $helper = $calc->getDays();
 
-                $phrase = $helper["days"] . ' Dias - ' . $helper["hours"] . ' Horas, ' . $helper["minutes"] . ' Minutos, ' . $helper["seconds"] . ' Segundos';
+                $phrase = strip_tags($helper["days"] . ' Dias - ' . $helper["hours"] . ' Horas, ' . $helper["minutes"] . ' Minutos, ' . $helper["seconds"] . ' Segundos');
 
                 $report[] = array(
                     'days' => $helper["days"],
@@ -66,7 +83,7 @@ class DevReport extends Search
                     'minutes' => $helper["minutes"],
                     'seconds' => $helper["seconds"],
                     'phrase' => $phrase,
-                    'dev' => $r["dev"],
+                    'item' => $r[$type],
                     'database' => $database,
                 );
             }

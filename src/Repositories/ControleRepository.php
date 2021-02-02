@@ -5,7 +5,7 @@ namespace Controle\Repositories;
 use Controle\Models\Controle;
 use Controle\Filters\ControleFilter;
 use Controle\Datatables\Datatables;
-use Controle\Report\DevReport;
+use Controle\Report\ReportFactory;
 
 class ControleRepository
 {
@@ -123,10 +123,9 @@ class ControleRepository
 
     public function pdf($request)
     {
-        //relatorio horas dev
-        $dev = new DevReport($request);
-        $dev_report = $dev->getReport();
+        $factory = new ReportFactory($request);
+        $report = $factory->getReport();
 
-        return $dev_report;
+        return $report;
     }
 }
