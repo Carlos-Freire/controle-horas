@@ -17,6 +17,7 @@ class Model
     protected $orderBy;
     protected $order;
     protected $where;
+    protected $groupBy;
 
     public function __construct($table)
     {
@@ -29,7 +30,8 @@ class Model
             'limit',
             'orderBy',
             'order',
-            'where'
+            'where',
+            'groupBy'
         );
         $this->setTable($table);
         $this->where = array();
@@ -197,6 +199,24 @@ class Model
     /**
      * @return mixed
      */
+    public function getGroupBy()
+    {
+        return $this->groupBy;
+    }
+
+    /**
+     * @param mixed $groupBy
+     * @return Model
+     */
+    public function setGroupBy($groupBy)
+    {
+        $this->groupBy = $groupBy;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
     public function getOrderBy()
     {
         return $this->orderBy;
@@ -289,6 +309,7 @@ class Model
         $order = $this->getOrder();
         $start = $this->getStart();
         $limit = $this->getLimit();
+        $groupBy = $this->getGroupBy();
 
         if (!is_null($select) && !is_null($table)) {
             $result['records'] = $this->getRecords(
@@ -297,6 +318,7 @@ class Model
                 $where,
                 $orderBy,
                 $order,
+                $groupBy,
                 $start,
                 $limit
             );
@@ -310,7 +332,7 @@ class Model
         return $result;
     }
 
-    private function getRecords($select,$table,$where,$orderBy,$order,$start,$limit)
+    private function getRecords($select,$table,$where,$orderBy,$order,$groupBy,$start,$limit)
     {
         $sql = "";
         if (!is_null($select) && !is_null($table)) {
@@ -323,6 +345,10 @@ class Model
 
         if (!is_null($orderBy) && !is_null($order)) {
             $sql .= " ORDER BY {$orderBy} {$order} ";
+        }
+
+        if (!is_null($groupBy)) {
+            $sql .= " GROUP BY {$groupBy} ";
         }
 
         if (!is_null($start) && !is_null($limit)) {

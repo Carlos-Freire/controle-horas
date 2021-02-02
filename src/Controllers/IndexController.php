@@ -26,11 +26,6 @@ class IndexController extends Controller
 
     }
 
-    public function show()
-    {
-
-    }
-
     public function add()
     {
         $this->showJsonHeader();
@@ -113,6 +108,13 @@ class IndexController extends Controller
     {
         $this->showJsonHeader();
         $json = $this->repository->datatables($_REQUEST);
+        echo json_encode($json);
+    }
+
+    public function pdf()
+    {
+        $this->showJsonHeader();
+        $json = $this->repository->pdf($_REQUEST);
         echo json_encode($json);
     }
 }

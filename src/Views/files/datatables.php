@@ -4,7 +4,7 @@
     <h3 class="panel-title">Controle de Horas</h3>
   </div>
   <div class="panel-body">
-    <form>
+    <form id="filter-datatables">
       <div class="row">
           <div class="col-sm-12 col-md-4">
             <div class="form-group">

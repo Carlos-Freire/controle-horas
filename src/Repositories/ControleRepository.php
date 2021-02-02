@@ -5,6 +5,7 @@ namespace Controle\Repositories;
 use Controle\Models\Controle;
 use Controle\Filters\ControleFilter;
 use Controle\Datatables\Datatables;
+use Controle\Report\DevReport;
 
 class ControleRepository
 {
@@ -118,5 +119,14 @@ class ControleRepository
     public function delete($field, $value)
     {
         return $this->model->delete($field, $value);
+    }
+
+    public function pdf($request)
+    {
+        //relatorio horas dev
+        $dev = new DevReport($request);
+        $dev_report = $dev->getReport();
+
+        return $dev_report;
     }
 }

@@ -11,7 +11,7 @@ use Controle\Controllers\Router;
 $controller = new IndexController;
 $router = new Router($controller,array(
     'index',
-    'show',
+    'pdf',
     'add',
     'edit',
     'delete',

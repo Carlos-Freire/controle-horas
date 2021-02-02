@@ -83,13 +83,19 @@
                         }
                     },
                     {
-                        extend: 'pdfHtml5',
-                        messageTop: 'Controle de Horas',
                         text: '<i class="fa fa-file-pdf-o" aria-hidden="true" title="Gerar PDF"></i>',
                         className: 'btn btn-default',
-                        /*action: function ( e, dt, node, config ) {
-                            alert( this.text() );
-                        }*/
+                        action: function ( e, dt, node, config ) {
+                            $.ajax({
+                                method: "POST",
+                                url: '?action=pdf',
+                                data: $('#filter-datatables').serialize(),
+                                //dataType: "json",
+                                success: function (data) {
+                                    console.log(data);
+                                }
+                            });
+                        }
                     },
                     {
                         text: '<i class="fa fa-pie-chart" aria-hidden="true" title="Gerar Gráfico"></i>',
