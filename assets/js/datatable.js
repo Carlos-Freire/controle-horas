@@ -90,9 +90,17 @@
                                 method: "POST",
                                 url: '?action=pdf',
                                 data: $('#filter-datatables').serialize(),
-                                //dataType: "json",
+                                xhrFields: {
+                                    responseType: 'blob'
+                                },
                                 success: function (data) {
-                                    console.log(data);
+                                    //console.log(data);
+                                    var filename = 'report_' + new Date().getTime() + '.pdf';
+                                    var a = document.createElement('a');
+                                    var url = window.URL.createObjectURL(data, {type: 'application/pdf'});
+                                    a.href = url;
+                                    a.download = filename;
+                                    a.click();
                                 }
                             });
                         }

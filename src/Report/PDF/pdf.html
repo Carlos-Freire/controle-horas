@@ -1,0 +1,86 @@
+<html>
+<head>
+    <title>Relatório de horas</title>
+    <style>
+        table {
+            font-family: sans-serif;
+            border: 1mm solid black;
+            border-collapse: collapse;
+        }
+        td {
+            padding: 4mm;
+            border: 1mm solid black;
+            vertical-align: middle;
+        }
+        th {
+            padding: 4mm;
+            border: 1mm solid black;
+            vertical-align: middle;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Relatório de horas trabalhadas</h1>
+    <p>Relatório gerado em: #data.</p><br>
+
+    <h2>Relatório de horas por desenvolvedor</h2>
+    <table class="layout">
+        <thead>
+            <tr>
+                <th>Desenvolvedor</th>
+                <th>Tempo gasto</th>
+            </tr>
+        </thead>
+        <tbody>
+            #relatorio_dev
+        </tbody>
+        <tfoot>
+            <tr>
+                <th>Desenvolvedor</th>
+                <th>Tempo gasto</th>
+            </tr>
+        </tfoot>
+    </table>
+    <br><br>
+
+    <h2>Relatório de horas por cliente</h2>
+    <table class="layout">
+        <thead>
+            <tr>
+                <th>Cliente</th>
+                <th>Tempo gasto</th>
+            </tr>
+        </thead>
+        <tbody>
+            #relatorio_cliente
+        </tbody>
+        <tfoot>
+            <tr>
+                <th>Cliente</th>
+                <th>Tempo gasto</th>
+            </tr>
+        </tfoot>
+    </table>
+    <br><br>
+
+    <h2>Relatório de horas por área</h2>
+    <table class="layout">
+        <thead>
+            <tr>
+                <th>Área</th>
+                <th>Tempo gasto</th>
+            </tr>
+        </thead>
+        <tbody>
+            #relatorio_area
+        </tbody>
+        <tfoot>
+            <tr>
+                <th>Área</th>
+                <th>Tempo gasto</th>
+            </tr>
+        </tfoot>
+    </table>
+</body>
+</html>

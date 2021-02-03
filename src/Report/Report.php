@@ -25,44 +25,43 @@ class Report
         $datatables = new Datatables($this->request);
         //pegando os campos criados por mim que serão usados na busca
         $datatables->setSearch(array(
-            'dev',
-            'cliente',
-            'area',
-            'dia',
-            'hora_ini',
-            'hora_fim',
+            'dev2',
+            'cliente2',
+            'area2',
+            'dia2',
+            'hora_ini2',
+            'hora_fim2',
             'de',
             'ate'
         ));
         //todos os campos do formulário filtrados
         $search = $datatables->getSearch();
 
-        //echo $type;
 
         //criando a consulta ao banco
         $this->model->setSelect("
             SEC_TO_TIME( SUM( TIME_TO_SEC( TIMEDIFF(hora_fim, hora_ini) ) ) ) AS horas,
-            {$type} 
+            {$type} AS item
         ");
         $this->model->setGroupBy($type);
 
-        if (isset($search['dev'])) {
-            $this->model->setWhere('dev','LIKE','%' . $search['dev'] . '%');
+        if (isset($search['dev2'])) {
+            $this->model->setWhere('dev','LIKE','%' . $search['dev2'] . '%');
         }
-        if (isset($search['cliente'])) {
-            $this->model->setWhere('cliente','LIKE','%' . $search['cliente'] . '%');
+        if (isset($search['cliente2'])) {
+            $this->model->setWhere('cliente','LIKE','%' . $search['cliente2'] . '%');
         }
-        if (isset($search['area'])) {
-            $this->model->setWhere('area','LIKE','%' . $search['area'] . '%');
+        if (isset($search['area2'])) {
+            $this->model->setWhere('area','LIKE','%' . $search['area2'] . '%');
         }
-        if (isset($search['dia'])) {
-            $this->model->setWhere('dia','=',$search['dia']);
+        if (isset($search['dia2'])) {
+            $this->model->setWhere('dia','=',$search['dia2']);
         }
-        if (isset($search['hora_ini'])) {
-            $this->model->setWhere('hora_ini','>',$search['hora_ini']);
+        if (isset($search['hora_ini2'])) {
+            $this->model->setWhere('hora_ini','>',$search['hora_ini2']);
         }
-        if (isset($search['hora_fim'])) {
-            $this->model->setWhere('hora_fim','<',$search['hora_fim']);
+        if (isset($search['hora_fim2'])) {
+            $this->model->setWhere('hora_fim','<',$search['hora_fim2']);
         }
         if (isset($search['de']) && isset($search['ate'])) {
             $this->model->setWhereBetween('dia',$search['de'],$search['ate']);
@@ -85,7 +84,7 @@ class Report
                     'minutes' => $helper["minutes"],
                     'seconds' => $helper["seconds"],
                     'phrase' => $phrase,
-                    'item' => $r[$type],
+                    'item' => $r["item"],
                     'database' => $database,
                 );
             }

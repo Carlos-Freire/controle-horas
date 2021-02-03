@@ -9,19 +9,19 @@
           <div class="col-sm-12 col-md-4">
             <div class="form-group">
               <label for="dev2">Desenvolvedor</label>
-              <input type="text" class="form-control" id="dev2" placeholder="Coloque o nome do desenvolvedor aqui...">
+              <input type="text" class="form-control" name="dev2" id="dev2" placeholder="Coloque o nome do desenvolvedor aqui...">
             </div>
           </div>
           <div class="col-sm-12 col-md-4">
             <div class="form-group">
               <label for="cliente2">Cliente</label>
-              <input type="text" class="form-control" id="cliente2" placeholder="Coloque o nome do cliente aqui...">
+              <input type="text" class="form-control" name="cliente2" id="cliente2" placeholder="Coloque o nome do cliente aqui...">
             </div>
           </div>
           <div class="col-sm-12 col-md-4">
             <div class="form-group">
               <label for="area2">Área</label>
-              <input type="text" class="form-control" id="area2" placeholder="Coloque o nome da área aqui...">
+              <input type="text" class="form-control" name="area2" id="area2" placeholder="Coloque o nome da área aqui...">
             </div>
           </div>
       </div>

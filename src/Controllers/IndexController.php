@@ -113,8 +113,6 @@ class IndexController extends Controller
 
     public function pdf()
     {
-        $this->showJsonHeader();
-        $json = $this->repository->pdf($_REQUEST);
-        echo json_encode($json);
+        $this->repository->pdf($_REQUEST);
     }
 }

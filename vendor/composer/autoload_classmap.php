@@ -6,15 +6,22 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',
     'Controle\\Controllers\\Controller' => $baseDir . '/src/Controllers/Controller.php',
     'Controle\\Controllers\\IndexController' => $baseDir . '/src/Controllers/IndexController.php',
     'Controle\\Controllers\\Router' => $baseDir . '/src/Controllers/Router.php',
     'Controle\\Database\\Connection' => $baseDir . '/src/Database/Connection.php',
     'Controle\\Database\\Database' => $baseDir . '/src/Database/Database.php',
+    'Controle\\Database\\Where\\InterfaceWhereStrategy' => $baseDir . '/src/Database/Where/InterfaceWhereStrategy.php',
+    'Controle\\Database\\Where\\StrategyBetween' => $baseDir . '/src/Database/Where/StrategyBetween.php',
+    'Controle\\Database\\Where\\StrategyOperator' => $baseDir . '/src/Database/Where/StrategyOperator.php',
     'Controle\\Datatables\\Datatables' => $baseDir . '/src/Datatables/Datatables.php',
     'Controle\\Filters\\ControleFilter' => $baseDir . '/src/Filters/ControleFilter.php',
     'Controle\\Models\\Controle' => $baseDir . '/src/Models/Controle.php',
     'Controle\\Models\\Model' => $baseDir . '/src/Models/Model.php',
+    'Controle\\Report\\CalcDays' => $baseDir . '/src/Report/CalcDays.php',
+    'Controle\\Report\\Report' => $baseDir . '/src/Report/Report.php',
+    'Controle\\Report\\ReportFactory' => $baseDir . '/src/Report/ReportFactory.php',
     'Controle\\Repositories\\ControleRepository' => $baseDir . '/src/Repositories/ControleRepository.php',
     'Controle\\Traits\\DateTrait' => $baseDir . '/src/Traits/DateTrait.php',
     'Controle\\Traits\\HourTrait' => $baseDir . '/src/Traits/HourTrait.php',

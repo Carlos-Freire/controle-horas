@@ -6,6 +6,7 @@ use Controle\Models\Controle;
 use Controle\Filters\ControleFilter;
 use Controle\Datatables\Datatables;
 use Controle\Report\ReportFactory;
+use Controle\Report\PDF\PDFReport;
 
 class ControleRepository
 {
@@ -126,6 +127,7 @@ class ControleRepository
         $factory = new ReportFactory($request);
         $report = $factory->getReport();
 
-        return $report;
+        $pdf = new PDFReport;
+        $pdf->output($report);
     }
 }
