@@ -67,7 +67,7 @@ class ControleFilter
 
     protected function setCliente()
     {
-        $this->cliente = filter_input(INPUT_POST, 'dev', FILTER_DEFAULT);
+        $this->cliente = filter_input(INPUT_POST, 'cliente', FILTER_DEFAULT);
     }
 
     /**

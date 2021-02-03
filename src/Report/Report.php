@@ -37,6 +37,8 @@ class Report
         //todos os campos do formulário filtrados
         $search = $datatables->getSearch();
 
+        //echo $type;
+
         //criando a consulta ao banco
         $this->model->setSelect("
             SEC_TO_TIME( SUM( TIME_TO_SEC( TIMEDIFF(hora_fim, hora_ini) ) ) ) AS horas,
