@@ -130,4 +130,10 @@ class ControleRepository
         $pdf = new PDFReport;
         $pdf->output($report);
     }
+
+    public function chart($request)
+    {
+        $factory = new ReportFactory($request);
+        return $factory->getReport();
+    }
 }

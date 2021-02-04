@@ -118,6 +118,7 @@
 </div>
 
 
+<!-- modal form -->
 <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="modal-form" id="modal-form">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
@@ -127,6 +128,27 @@
       </div>
       <div class="modal-body">
           <?php include 'form.php'; ?>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- modal gráfico -->
+<div class="modal fade bs-example-modal-lg" id="modal-chart" tabindex="-1" aria-labelledby="modal-chart" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Relatório</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <canvas id="chart01" class="mb-3 mt-3"></canvas>
+        <canvas id="chart02" class="mb-3 mt-3"></canvas>
+        <canvas id="chart02" class="mb-3 mt-3"></canvas>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
       </div>
     </div>
   </div>

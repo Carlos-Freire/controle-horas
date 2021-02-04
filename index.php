@@ -12,6 +12,7 @@ $controller = new IndexController;
 $router = new Router($controller,array(
     'index',
     'pdf',
+    'chart',
     'add',
     'edit',
     'delete',

@@ -115,4 +115,11 @@ class IndexController extends Controller
     {
         $this->repository->pdf($_REQUEST);
     }
+
+    public function chart()
+    {
+        $this->showJsonHeader();
+        $json = $this->repository->chart($_REQUEST);
+        echo json_encode($json);
+    }
 }

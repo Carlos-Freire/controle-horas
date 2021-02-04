@@ -109,11 +109,94 @@
                         text: '<i class="fa fa-pie-chart" aria-hidden="true" title="Gerar Gráfico"></i>',
                         className: 'btn btn-default',
                         action: function ( e, dt, node, config ) {
-                            alert( this.text() );
+                            var c1, c2, c3;
+
+                            if (c1 !== "undefined" && c2 !== "undefined" && c3 !== "undefined") {
+                                c1.destroy();
+                                c2.destroy();
+                                c3.destroy();
+                            }
+
+                            $.ajax({
+                                method: "POST",
+                                url: '?action=chart',
+                                data: $('#filter-datatables').serialize(),
+                                success: function (data) {
+                                    console.log(data);
+
+                                    c1 = $private.gerarChart(
+                                        'chart01',
+                                        data.dev.item,
+                                        'Gráfico de Horas - Desenvolvedores',
+                                        data.dev.hours,
+                                        data.dev.pharse,
+                                        'rgba(255, 2, 0, 0.3)'
+                                    );
+
+                                    c2 = $private.gerarChart(
+                                        'chart02',
+                                        data.area.item,
+                                        'Gráfico de Horas - Área',
+                                        data.area.hours,
+                                        data.area.pharse,
+                                        'rgba(0, 139, 0, 0.3)'
+                                    );
+
+                                    c3 = $private.gerarChart(
+                                        'chart03',
+                                        data.cliente.item,
+                                        'Gráfico de Horas - Cliente',
+                                        data.cliente.hours,
+                                        data.cliente.pharse,
+                                        'rgba(255, 255, 0, 0.3)'
+                                    );
+                                    
+                                    setTimeout(function() { 
+                                        $('#modal-form').modal('show');
+                                    }, 1500);                                    
+                                }
+                            });
                         }
                     },
                 ]
             });
+        };
+
+        $private.gerarChart = function(chartId, labels, title, horas, frases, color) {
+            var ctx = document.getElementById(chartId).getContext('2d');
+            var chart = new Chart(ctx, {
+                // The type of chart we want to create
+                type: 'bar',
+            
+                // The data for our dataset
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: title,
+                        backgroundColor: color,
+                        borderColor: color,
+                        borderWidth: 1,
+                        data: horas            
+                    }]
+                },
+            
+                // Configuration options go here
+                options: {
+                    responsive: true,
+                    tooltips: {
+                        mode: 'index',
+                        intersect: false,
+                        callbacks: {
+                            label: function(tooltipItem, data) {
+                                //console.log(tooltipItem);
+                                return frases[tooltipItem.index];
+                            }
+                        }
+                    }
+                }
+            });
+
+            return chart;
         };
 
         $private.editar = function() {
