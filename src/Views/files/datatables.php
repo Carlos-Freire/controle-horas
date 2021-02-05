@@ -133,22 +133,18 @@
   </div>
 </div>
 
-
 <!-- modal gráfico -->
 <div class="modal fade bs-example-modal-lg" id="modal-chart" tabindex="-1" aria-labelledby="modal-chart" aria-hidden="true">
-  <div class="modal-dialog">
+  <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Relatório</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h5 class="modal-title" id="modal-chart-title">Gráfico de horas</h5>
       </div>
-      <div class="modal-body">
-        <canvas id="chart01" class="mb-3 mt-3"></canvas>
-        <canvas id="chart02" class="mb-3 mt-3"></canvas>
-        <canvas id="chart02" class="mb-3 mt-3"></canvas>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+      <div class="modal-body" style="padding: 20px; box-sizing: border-box;">
+        <canvas id="chart01" class="mb-4 mt-4"></canvas>
+        <canvas id="chart02" class="mb-4 mt-5"></canvas>
+        <canvas id="chart03" class="mb-4 mt-5"></canvas>
       </div>
     </div>
   </div>
