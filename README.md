@@ -19,3 +19,6 @@ Controle de horas trabalhadas por tarefa
 
 	Totalizar sempre em horas / dias, conforme o(s) filtro(s).
 	Utilizar a tabela Controle
+
+    Para criar o submodulo:
+    https://imasters.com.br/desenvolvimento/utilizando-o-git-submodules
