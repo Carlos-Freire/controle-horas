@@ -27,11 +27,12 @@ class CalcDays
             $this->seconds = $this->explode[2];
             $this->days = round($this->hours/24);
 
+
             if ($this->days > 0 ) {
-                $h_left = $this->hours - (24 * $this->days);
+                $h_left = (24 * $this->days) - $this->hours;
 
                 if ($h_left < 10)
-                    $h = '0' . $h_left;
+                    $this->hours = '0' . $h_left;
             }
         }
         return array(
