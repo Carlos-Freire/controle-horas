@@ -76,15 +76,13 @@ class Report
                 $calc = new CalcDays($database);
                 $helper = $calc->getDays();
 
-                $seconds = substr($helper["seconds"],0,2);
-
-                $phrase = strip_tags($helper["days"] . ' Dia(s) - ' . $helper["hours"] . ' Hora(s), ' . $helper["minutes"] . ' Minuto(s), ' . $seconds . ' Segundo(s)');
+                $phrase = strip_tags($helper["days"] . ' Dia(s) - ' . $helper["hours"] . ' Hora(s), ' . $helper["minutes"] . ' Minuto(s), ' . $helper["seconds"] . ' Segundo(s)');
 
                 $report[] = array(
                     'days' => $helper["days"],
                     'hours' => $helper["hours"],
                     'minutes' => $helper["minutes"],
-                    'seconds' => $seconds,
+                    'seconds' => $helper["seconds"],
                     'phrase' => $phrase,
                     'item' => $r["item"],
                     'database' => $database,

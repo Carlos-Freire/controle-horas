@@ -27,6 +27,7 @@ class CalcDays
             $this->seconds = $this->explode[2];
             $this->days = round($this->hours/24);
 
+            $this->seconds = substr($this->seconds,0,2);
 
             if ($this->days > 0 ) {
                 $h_left = (24 * $this->days) - $this->hours;
