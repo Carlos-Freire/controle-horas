@@ -42,7 +42,7 @@ Decidi usar essa estrutura pois assim este projeto poderá ser utilizado em outr
 **bootstrap.php** - Neste arquivo são carregados os arquivos do sistema que são necessários para o seu funcionamento.\
 **vendor/** - Aqui estão as bibliotecas de terceiros instaladas e também o mapeamento das classes do sistema feita pelo composer.\
 **assets/** - Aqui estão os arquivos do front-end\
-**src/** - Essa pasta é a do sistema onde estão todos os arquivos ela responde pelo namespace "Controle"\
+**src/** - Essa pasta é a do sistema onde estão todos os arquivos ela responde pelo namespace "Controle"
 
 
 **Controllers/Controller.php** - Este arquivo apenas retorna os headers necessários para o json do datatables\
@@ -81,7 +81,7 @@ Decidi usar essa estrutura pois assim este projeto poderá ser utilizado em outr
 Nesta aplicação você vê as entradas listadas no datatables, logo acima do datatables você tem os botões que interagem com o conteúdo e geram os gráficos e relatórios e acima disso tem o formulário de busca.
 
 
-Todos os campos preenchidos na busca refletem na consulta no datatables e no gráfico e relatório, por exemplo: se eu quiser apenas os dados do Carlos, basta eu colocar o nome Carlos no campo dev e clicar em filtrar, depois disso você vai ter o gráfico e relatório usando os dados do formulário na hora de fazer o ajax para gerar a saída de cada um deles.\
+Todos os campos preenchidos na busca refletem na consulta no datatables e no gráfico e relatório, por exemplo: se eu quiser apenas os dados do Carlos, basta eu colocar o nome Carlos no campo dev e clicar em filtrar, depois disso você vai ter o gráfico e relatório usando os dados do formulário na hora de fazer o ajax para gerar a saída de cada um deles.
 
 **Obs:** Antes de gerar o pdf e o gráfico o sistema da um serialize() do jQuery no form de busca e envia os dados via ajax ai no backend eles são filtrados e o relatório gerado. Essa lógica do front-end fica no arquivo datatables.js em assets/js.
 
